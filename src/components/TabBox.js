@@ -16,7 +16,7 @@ function TabBox(props) {
 	      <h2><TabGroupStage /></h2>
 	    </TabPanel>
 	    <TabPanel>
-	      <h2>tabFinalStage</h2>
+	      <h2><TabFinalStage /></h2>
 	    </TabPanel>
 	  </Tabs>
 	);

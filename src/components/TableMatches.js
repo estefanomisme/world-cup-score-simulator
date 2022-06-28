@@ -30,9 +30,9 @@ function TableMatches({equipos}) {
 						<td>Fecha {fecha[0]}</td>
 						<td>{fecha[1]}</td>
 						<td>
-							<input className='score1' type='tel' maxlength='2' pattern='[0-9]*' />
+							<input className='score1' type='number' />
 							-
-							<input className='score2' type='tel' maxlength='2' pattern='[0-9]*' />
+							<input className='score2' type='number' />
 						</td>
 						<td>{fecha[2]}</td>
 					</tr>
