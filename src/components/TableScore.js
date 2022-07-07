@@ -3,6 +3,23 @@ import './styles/react-tabs.css';
 import './styles/TableScore.css';
 
 function TableScore({equipos}) {
+
+	const ordenEquipos = [...equipos].sort((y, x) => {
+
+		if ( x.puntos === y.puntos ) {
+			if (( x.golesFavor - x.golesContra ) === ( y.golesFavor - y.golesContra)) {
+				return x.golesFavor - y.golesFavor;
+			}
+			else {
+				return (x.golesFavor - x.golesContra ) - ( y.golesFavor - y.golesContra)
+			}
+		}
+		else {
+			return x.puntos - y.puntos;
+		}
+
+	})
+
 	return (
 			<table>
 				<thead>
@@ -20,7 +37,7 @@ function TableScore({equipos}) {
 					</tr>
 				</thead>
 				<tbody>
-					{equipos.map((equipo, index) => (
+					{ordenEquipos.map((equipo, index) => (
 						<tr key={index}>
 							<td>
 								<img
@@ -36,7 +53,7 @@ function TableScore({equipos}) {
 							<td>{equipo.derrotas}</td>
 							<td>{equipo.golesFavor}</td>
 							<td>{equipo.golesContra}</td>
-							<td>{equipo.diferenciaGoles}</td>
+							<td>{equipo.golesFavor - equipo.golesContra}</td>
 					</tr>
 					))}
 				</tbody>

@@ -2,9 +2,36 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { PanelOctavosFinal, PanelCuartosFinal, PanelSemifinal, PanelFinal } from './PanelFinalStage';
 import './styles/react-tabs.css';
 import './styles/TabFinalStage.css';
+import { useContext } from 'react';
+import { Context } from './TabBox';
 
 
 function TabFinalStage (props) {
+	const [equipos, , ,] = useContext(Context);
+	const grupos = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+	let clasificados = [];
+
+	for (let grupo of grupos) {
+		let [primero, segundo] = equipos
+			.filter(equipo => equipo.grupo === grupo)
+      .sort((y, x) => {
+        if ( x.puntos === y.puntos ) {
+          if (( x.golesFavor - x.golesContra ) === ( y.golesFavor - y.golesContra)) {
+            return x.golesFavor - y.golesFavor;
+          }
+          else {
+            return (x.golesFavor - x.golesContra ) - ( y.golesFavor - y.golesContra)
+          }
+        }
+        else {
+          return x.puntos - y.puntos;
+        }
+      })
+		clasificados.push(primero, segundo);
+	}
+
+	console.log(clasificados);
+
 	return (
 		<Tabs>
 			<TabList>
