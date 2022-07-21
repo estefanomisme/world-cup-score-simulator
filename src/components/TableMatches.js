@@ -11,7 +11,7 @@ function TableMatches({equiposGrupo, partidosGrupo}) {
 	const equipo2 = equiposGrupo.filter(equipo => equipo.bombo === 2)[0].nombre;
 	const equipo3 = equiposGrupo.filter(equipo => equipo.bombo === 3)[0].nombre;
 	const equipo4 = equiposGrupo.filter(equipo => equipo.bombo === 4)[0].nombre;
-	
+
 	function setResultado(nFecha, equipoNombre, goles, esLocal) {
 
 		let [partidoActualizado] = partidosGrupo
@@ -19,22 +19,19 @@ function TableMatches({equiposGrupo, partidosGrupo}) {
 				&& (partido.local.nombre === equipoNombre || partido.visitante.nombre === equipoNombre));
 		const restoDePartidos = partidos.filter( partido => partido !== partidoActualizado );
 
-		if (goles !== '' && !(Number.isNaN(parseInt(goles)))) {
-			if (esLocal === true) {
-				partidoActualizado = {...partidoActualizado, local: {nombre: equipoNombre, resultado: parseInt(goles)}};
-			}
-			else {
-				partidoActualizado = {...partidoActualizado, visitante: {nombre: equipoNombre, resultado: parseInt(goles)}};
-			}
-		}
-		else {
-			partidoActualizado = {...partidoActualizado, local: {nombre: equipoNombre, resultado: null}};
+		const resultado = goles !== '' && !(Number.isNaN(parseInt(goles))) ? parseInt(goles) : null;
+
+		if (esLocal === true) {
+			partidoActualizado = {...partidoActualizado, local: {nombre: equipoNombre, resultado: resultado}};
+		} else {
+			partidoActualizado = {...partidoActualizado, visitante: {nombre: equipoNombre, resultado: resultado}};
 		}
 
 		setPartidos([...restoDePartidos, partidoActualizado].sort((x, y) => x.id - y.id));
 	}
 
 	function enviarResultadosATabla(e) {
+    /* Envia los resultados a la tabla de clasificaciones */
 		e.preventDefault();
 
 		const partidosLlenados = partidosGrupo
@@ -101,7 +98,6 @@ function TableMatches({equiposGrupo, partidosGrupo}) {
       ), 0)
     ));
 
-
     const golesContraLocal = listaNombreEquiposActualizados.map((equipo) => (
       partidosLlenados
       .reduce((total, partido) => (
@@ -116,7 +112,7 @@ function TableMatches({equiposGrupo, partidosGrupo}) {
       ), 0)
     ));
 
-    const objEquiposActualizados = listaEquiposActualizados.map((equipo, indice) => ({...equipo,
+    let objEquiposActualizados = listaEquiposActualizados.map((equipo, indice) => ({...equipo,
       partidos: partidosJugados[indice],
       victorias: victorias[indice],
       empates: empates[indice],
@@ -126,14 +122,75 @@ function TableMatches({equiposGrupo, partidosGrupo}) {
       puntos: victorias[indice] * 3 + empates[indice],
     }))
 
-		setEquipos([...restodeEquipos, ...objEquiposActualizados]);
+		objEquiposActualizados = objEquiposActualizados.sort((y, x) => {
+			if ( x.puntos === y.puntos ) {
+				if (( x.golesFavor - x.golesContra ) === ( y.golesFavor - y.golesContra)) {
+					return x.golesFavor - y.golesFavor;
+				}
+				else {
+					return (x.golesFavor - x.golesContra ) - ( y.golesFavor - y.golesContra)
+				}
+			}
+			else {
+				return x.puntos - y.puntos;
+			}
+		});
 
-		/*if (partidosGrupo.every(partido => partido.local.resultado !== null
-			&& partido.visitante.resultado !== null)) {
-			completo = true;
-		} else {
-			completo = false;
-		}*/
+		objEquiposActualizados[0].puesto = 1;
+		objEquiposActualizados[1].puesto = 2;
+		objEquiposActualizados[2].puesto = 3;
+		objEquiposActualizados[3].puesto = 4;
+
+    /* Cuando los resultados se envian, se determina la posicion y clasificacion de los equipos,
+       y se actualiza la lista de partidos de la fase final
+    */
+
+    const grupoEquipos = objEquiposActualizados[0].grupo;
+
+    let partidosActualizados = partidos
+      .filter( partido => partido.grupo === 'octavosFinal' )
+      .filter( partido => partido.local.id[1] === grupoEquipos
+        || partido.visitante.id[1] === grupoEquipos);
+
+		if (objEquiposActualizados.every(equipo => equipo.partidos === 3)) {
+			objEquiposActualizados[0].clasificado = 'octavosFinal';
+			objEquiposActualizados[1].clasificado = 'octavosFinal';
+			objEquiposActualizados[2].clasificado = 'faseDeGrupos';
+			objEquiposActualizados[3].clasificado = 'faseDeGrupos';
+
+      partidosActualizados.forEach( partido => {
+        if ('1' + objEquiposActualizados[0].grupo === partido.local.id) {
+          partido.local.nombre = objEquiposActualizados[0].nombre;
+        } else if ('1' + objEquiposActualizados[0].grupo === partido.visitante.id) {
+          partido.visitante.nombre = objEquiposActualizados[0].nombre;
+        }
+        if ('2' + objEquiposActualizados[1].grupo === partido.local.id) {
+          partido.local.nombre = objEquiposActualizados[1].nombre;
+        } else if ('2' + objEquiposActualizados[1].grupo === partido.visitante.id) {
+          partido.visitante.nombre = objEquiposActualizados[1].nombre;
+        }
+      });
+		}
+    else {
+      partidosActualizados.forEach( partido => {
+        if ('1' + objEquiposActualizados[0].grupo === partido.local.id) {
+          partido.local.nombre = null;
+        } else if ('1' + objEquiposActualizados[0].grupo === partido.visitante.id) {
+          partido.visitante.nombre = null;
+        }
+        if ('2' + objEquiposActualizados[1].grupo === partido.local.id) {
+          partido.local.nombre = null;
+        } else if ('2' + objEquiposActualizados[1].grupo === partido.visitante.id) {
+          partido.visitante.nombre = null;
+        }
+      });
+    }
+
+    const restodePartidos = partidos
+      .filter( partido => !partidosActualizados.includes(partido));
+
+		setEquipos([...restodeEquipos, ...objEquiposActualizados]);
+    setPartidos([...restodePartidos, ...partidosActualizados].sort((x, y) => x.id - y.id));
 
 	}
 

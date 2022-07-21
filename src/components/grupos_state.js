@@ -7,6 +7,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 1,
+        clasificado: 'faseDeGrupos',
         grupo: 'A',
         bombo: 1,
         logo: 'logo-qa.png'
@@ -20,6 +23,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 2,
+        clasificado: 'faseDeGrupos',
         grupo: 'A',
         bombo: 2,
         logo: 'logo-ec.png'
@@ -33,6 +39,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 3,
+        clasificado: 'faseDeGrupos',
         grupo: 'A',
         bombo: 3,
         logo: 'logo-sn.png'
@@ -46,6 +55,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 4,
+        clasificado: 'faseDeGrupos',
         grupo: 'A',
         bombo: 4,
         logo: 'logo-nd.png'
@@ -60,6 +72,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 1,
+        clasificado: 'faseDeGrupos',
         grupo: 'B',
         bombo: 1,
         logo: 'logo-en.png'
@@ -73,6 +88,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 2,
+        clasificado: 'faseDeGrupos',
         grupo: 'B',
         bombo: 2,
         logo: 'logo-ir.png'
@@ -86,6 +104,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 3,
+        clasificado: 'faseDeGrupos',
         grupo: 'B',
         bombo: 3,
         logo: 'logo-us.png'
@@ -99,6 +120,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 4,
+        clasificado: 'faseDeGrupos',
         grupo: 'B',
         bombo: 4,
         logo: 'logo-wa.png'
@@ -112,6 +136,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 1,
+        clasificado: 'faseDeGrupos',
         grupo: 'C',
         bombo: 1,
         logo: 'logo-ar.png'
@@ -125,6 +152,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 2,
+        clasificado: 'faseDeGrupos',
         grupo: 'C',
         bombo: 2,
         logo: 'logo-sa.png'
@@ -138,6 +168,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 3,
+        clasificado: 'faseDeGrupos',
         grupo: 'C',
         bombo: 3,
         logo: 'logo-mx.png'
@@ -151,6 +184,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 4,
+        clasificado: 'faseDeGrupos',
         grupo: 'C',
         bombo: 4,
         logo: 'logo-pl.png'
@@ -164,6 +200,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 1,
+        clasificado: 'faseDeGrupos',
         grupo: 'D',
         bombo: 1,
         logo: 'logo-fr.png'
@@ -177,6 +216,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 2,
+        clasificado: 'faseDeGrupos',
         grupo: 'D',
         bombo: 2,
         logo: 'logo-au.png'
@@ -190,6 +232,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 3,
+        clasificado: 'faseDeGrupos',
         grupo: 'D',
         bombo: 3,
         logo: 'logo-dk.png'
@@ -203,6 +248,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 4,
+        clasificado: 'faseDeGrupos',
         grupo: 'D',
         bombo: 4,
         logo: 'logo-tn.png'
@@ -216,6 +264,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 1,
+        clasificado: 'faseDeGrupos',
         grupo: 'E',
         bombo: 1,
         logo: 'logo-es.png'
@@ -229,6 +280,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 2,
+        clasificado: 'faseDeGrupos',
         grupo: 'E',
         bombo: 2,
         logo: 'logo-cr.png'
@@ -242,6 +296,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 3,
+        clasificado: 'faseDeGrupos',
         grupo: 'E',
         bombo: 3,
         logo: 'logo-de.png'
@@ -255,6 +312,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 4,
+        clasificado: 'faseDeGrupos',
         grupo: 'E',
         bombo: 4,
         logo: 'logo-jp.png'
@@ -268,6 +328,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 1,
+        clasificado: 'faseDeGrupos',
         grupo: 'F',
         bombo: 1,
         logo: 'logo-be.png'
@@ -281,6 +344,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 2,
+        clasificado: 'faseDeGrupos',
         grupo: 'F',
         bombo: 2,
         logo: 'logo-ca.png'
@@ -294,6 +360,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 3,
+        clasificado: 'faseDeGrupos',
         grupo: 'F',
         bombo: 3,
         logo: 'logo-ma.png'
@@ -307,6 +376,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 4,
+        clasificado: 'faseDeGrupos',
         grupo: 'F',
         bombo: 4,
         logo: 'logo-hr.png'
@@ -320,6 +392,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 1,
+        clasificado: 'faseDeGrupos',
         grupo: 'G',
         bombo: 1,
         logo: 'logo-br.png'
@@ -333,6 +408,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 2,
+        clasificado: 'faseDeGrupos',
         grupo: 'G',
         bombo: 2,
         logo: 'logo-rs.png',
@@ -346,6 +424,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 3,
+        clasificado: 'faseDeGrupos',
         grupo: 'G',
         bombo: 3,
         logo: 'logo-ch.png'
@@ -359,6 +440,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 4,
+        clasificado: 'faseDeGrupos',
         grupo: 'G',
         bombo: 4,
         logo: 'logo-cm.png'
@@ -372,6 +456,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 1,
+        clasificado: 'faseDeGrupos',
         grupo: 'H',
         bombo: 1,
         logo: 'logo-pt.png'
@@ -385,6 +472,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 2,
+        clasificado: 'faseDeGrupos',
         grupo: 'H',
         bombo: 2,
         logo: 'logo-gh.png'
@@ -398,6 +488,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 3,
+        clasificado: 'faseDeGrupos',
         grupo: 'H',
         bombo: 3,
         logo: 'logo-uy.png'
@@ -411,6 +504,9 @@ export const listaEquipos = [{
         derrotas: 0,
         golesFavor: 0,
         golesContra: 0,
+        esCampeon: false,
+        puesto: 4,
+        clasificado: 'faseDeGrupos',
         grupo: 'H',
         bombo: 4,
         logo: 'logo-kr.png',
@@ -421,336 +517,480 @@ export const listaPartidos = [{
         id: 1,
         grupo: 'A',
         fecha: 1,
-        local: { nombre: 'Qatar', resultado: null },
-        visitante: { nombre: 'Ecuador', resultado: null }
+        local: { nombre: 'Qatar', resultado: 1 },
+        visitante: { nombre: 'Ecuador', resultado: 2 }
     },
     {
         id: 2,
         grupo: 'A',
         fecha: 1,
-        local: { nombre: 'Senegal', resultado: null },
-        visitante: { nombre: 'Países Bajos', resultado: null }
+        local: { nombre: 'Senegal', resultado: 1 },
+        visitante: { nombre: 'Países Bajos', resultado: 2 }
     },
     {
         id: 3,
         grupo: 'A',
         fecha: 2,
-        local: { nombre: 'Países Bajos', resultado: null },
-        visitante: { nombre: 'Ecuador', resultado: null }
+        local: { nombre: 'Países Bajos', resultado: 2 },
+        visitante: { nombre: 'Ecuador', resultado: 0 }
     },
     {
         id: 4,
         grupo: 'A',
         fecha: 2,
-        local: { nombre: 'Qatar', resultado: null },
-        visitante: { nombre: 'Senegal', resultado: null }
+        local: { nombre: 'Qatar', resultado: 1 },
+        visitante: { nombre: 'Senegal', resultado: 4 }
     },
     {
         id: 5,
         grupo: 'A',
         fecha: 3,
-        local: { nombre: 'Países Bajos', resultado: null },
-        visitante: { nombre: 'Qatar', resultado: null }
+        local: { nombre: 'Países Bajos', resultado: 3 },
+        visitante: { nombre: 'Qatar', resultado: 0 }
     },
     {
         id: 6,
         grupo: 'A',
         fecha: 3,
-        local: { nombre: 'Ecuador', resultado: null },
-        visitante: { nombre: 'Senegal', resultado: null }
+        local: { nombre: 'Ecuador', resultado: 1 },
+        visitante: { nombre: 'Senegal', resultado: 1 }
     },
     {
         id: 7,
         grupo: 'B',
         fecha: 1,
-        local: { nombre: 'Inglaterra', resultado: null },
-        visitante: { nombre: 'Irán', resultado: null }
+        local: { nombre: 'Inglaterra', resultado: 3 },
+        visitante: { nombre: 'Irán', resultado: 1 }
     },
     {
         id: 8,
         grupo: 'B',
         fecha: 1,
-        local: { nombre: 'Estados Unidos', resultado: null },
-        visitante: { nombre: 'Gales', resultado: null }
+        local: { nombre: 'Estados Unidos', resultado: 2 },
+        visitante: { nombre: 'Gales', resultado: 1 }
     },
     {
         id: 9,
         grupo: 'B',
         fecha: 2,
-        local: { nombre: 'Gales', resultado: null },
-        visitante: { nombre: 'Irán', resultado: null }
+        local: { nombre: 'Gales', resultado: 2 },
+        visitante: { nombre: 'Irán', resultado: 1 }
     },
     {
         id: 10,
         grupo: 'B',
         fecha: 2,
-        local: { nombre: 'Inglaterra', resultado: null },
-        visitante: { nombre: 'Estados Unidos', resultado: null }
+        local: { nombre: 'Inglaterra', resultado: 2 },
+        visitante: { nombre: 'Estados Unidos', resultado: 2 }
     },
     {
         id: 11,
         grupo: 'B',
         fecha: 3,
-        local: { nombre: 'Gales', resultado: null },
-        visitante: { nombre: 'Inglaterra', resultado: null }
+        local: { nombre: 'Gales', resultado: 1 },
+        visitante: { nombre: 'Inglaterra', resultado: 2 }
     },
     {
         id: 12,
         grupo: 'B',
         fecha: 3,
-        local: { nombre: 'Irán', resultado: null },
-        visitante: { nombre: 'Estados Unidos', resultado: null }
+        local: { nombre: 'Irán', resultado: 0 },
+        visitante: { nombre: 'Estados Unidos', resultado: 1 }
     },
     {
         id: 13,
         grupo: 'C',
         fecha: 1,
-        local: { nombre: 'Argentina', resultado: null },
-        visitante: { nombre: 'Arabia Saudita', resultado: null }
+        local: { nombre: 'Argentina', resultado: 3 },
+        visitante: { nombre: 'Arabia Saudita', resultado: 0 }
     },
     {
         id: 14,
         grupo: 'C',
         fecha: 1,
-        local: { nombre: 'México', resultado: null },
-        visitante: { nombre: 'Polonia', resultado: null }
+        local: { nombre: 'México', resultado: 0 },
+        visitante: { nombre: 'Polonia', resultado: 1 }
     },
     {
         id: 15,
         grupo: 'C',
         fecha: 2,
-        local: { nombre: 'Polonia', resultado: null },
-        visitante: { nombre: 'Arabia Saudita', resultado: null }
+        local: { nombre: 'Polonia', resultado: 1 },
+        visitante: { nombre: 'Arabia Saudita', resultado: 0 }
     },
     {
         id: 16,
         grupo: 'C',
         fecha: 2,
-        local: { nombre: 'Argentina', resultado: null },
-        visitante: { nombre: 'México', resultado: null }
+        local: { nombre: 'Argentina', resultado: 2 },
+        visitante: { nombre: 'México', resultado: 0 }
     },
     {
         id: 17,
         grupo: 'C',
         fecha: 3,
-        local: { nombre: 'Polonia', resultado: null },
-        visitante: { nombre: 'Argentina', resultado: null }
+        local: { nombre: 'Polonia', resultado: 1 },
+        visitante: { nombre: 'Argentina', resultado: 2 }
     },
     {
         id: 18,
         grupo: 'C',
         fecha: 3,
-        local: { nombre: 'Arabia Saudita', resultado: null },
-        visitante: { nombre: 'México', resultado: null }
+        local: { nombre: 'Arabia Saudita', resultado: 0 },
+        visitante: { nombre: 'México', resultado: 0 }
     },
     {
         id: 19,
         grupo: 'D',
         fecha: 1,
-        local: { nombre: 'Francia', resultado: null },
-        visitante: { nombre: 'Australia', resultado: null }
+        local: { nombre: 'Francia', resultado: 2 },
+        visitante: { nombre: 'Australia', resultado: 1 }
     },
     {
         id: 20,
         grupo: 'D',
         fecha: 1,
-        local: { nombre: 'Dinamarca', resultado: null },
-        visitante: { nombre: 'Túnez', resultado: null }
+        local: { nombre: 'Dinamarca', resultado: 3 },
+        visitante: { nombre: 'Túnez', resultado: 0 }
     },
     {
         id: 21,
         grupo: 'D',
         fecha: 2,
-        local: { nombre: 'Túnez', resultado: null },
-        visitante: { nombre: 'Australia', resultado: null }
+        local: { nombre: 'Túnez', resultado: 1 },
+        visitante: { nombre: 'Australia', resultado: 1 }
     },
     {
         id: 22,
         grupo: 'D',
         fecha: 2,
-        local: { nombre: 'Francia', resultado: null },
-        visitante: { nombre: 'Dinamarca', resultado: null }
+        local: { nombre: 'Francia', resultado: 0 },
+        visitante: { nombre: 'Dinamarca', resultado: 1 }
     },
     {
         id: 23,
         grupo: 'D',
         fecha: 3,
-        local: { nombre: 'Túnez', resultado: null },
-        visitante: { nombre: 'Francia', resultado: null }
+        local: { nombre: 'Túnez', resultado: 0 },
+        visitante: { nombre: 'Francia', resultado: 2 }
     },
     {
         id: 24,
         grupo: 'D',
         fecha: 3,
-        local: { nombre: 'Australia', resultado: null },
-        visitante: { nombre: 'Dinamarca', resultado: null }
+        local: { nombre: 'Australia', resultado: 1 },
+        visitante: { nombre: 'Dinamarca', resultado: 1 }
     },
     {
         id: 25,
         grupo: 'E',
         fecha: 1,
-        local: { nombre: 'España', resultado: null },
-        visitante: { nombre: 'Costa Rica', resultado: null }
+        local: { nombre: 'España', resultado: 3 },
+        visitante: { nombre: 'Costa Rica', resultado: 1 }
     },
     {
         id: 26,
         grupo: 'E',
         fecha: 1,
-        local: { nombre: 'Alemania', resultado: null },
-        visitante: { nombre: 'Japón', resultado: null }
+        local: { nombre: 'Alemania', resultado: 2 },
+        visitante: { nombre: 'Japón', resultado: 2 }
     },
     {
         id: 27,
         grupo: 'E',
         fecha: 2,
-        local: { nombre: 'Japón', resultado: null },
-        visitante: { nombre: 'Costa Rica', resultado: null }
+        local: { nombre: 'Japón', resultado: 2 },
+        visitante: { nombre: 'Costa Rica', resultado: 1 }
     },
     {
         id: 28,
         grupo: 'E',
         fecha: 2,
-        local: { nombre: 'España', resultado: null },
-        visitante: { nombre: 'Alemania', resultado: null }
+        local: { nombre: 'España', resultado: 1 },
+        visitante: { nombre: 'Alemania', resultado: 1 }
     },
     {
         id: 29,
         grupo: 'E',
         fecha: 3,
-        local: { nombre: 'Japón', resultado: null },
-        visitante: { nombre: 'España', resultado: null }
+        local: { nombre: 'Japón', resultado: 1 },
+        visitante: { nombre: 'España', resultado: 2 }
     },
     {
         id: 30,
         grupo: 'E',
         fecha: 3,
-        local: { nombre: 'Costa Rica', resultado: null },
-        visitante: { nombre: 'Alemania', resultado: null }
+        local: { nombre: 'Costa Rica', resultado: 0 },
+        visitante: { nombre: 'Alemania', resultado: 2 }
     },
     {
         id: 31,
         grupo: 'F',
         fecha: 1,
-        local: { nombre: 'Bélgica', resultado: null },
-        visitante: { nombre: 'Canadá', resultado: null }
+        local: { nombre: 'Bélgica', resultado: 1 },
+        visitante: { nombre: 'Canadá', resultado: 1 }
     },
     {
         id: 32,
         grupo: 'F',
         fecha: 1,
-        local: { nombre: 'Marruecos', resultado: null },
-        visitante: { nombre: 'Croacia', resultado: null }
+        local: { nombre: 'Marruecos', resultado: 1 },
+        visitante: { nombre: 'Croacia', resultado: 2 }
     },
     {
         id: 33,
         grupo: 'F',
         fecha: 2,
-        local: { nombre: 'Croacia', resultado: null },
-        visitante: { nombre: 'Canadá', resultado: null }
+        local: { nombre: 'Croacia', resultado: 2 },
+        visitante: { nombre: 'Canadá', resultado: 1 }
     },
     {
         id: 34,
         grupo: 'F',
         fecha: 2,
-        local: { nombre: 'Bélgica', resultado: null },
-        visitante: { nombre: 'Marruecos', resultado: null }
+        local: { nombre: 'Bélgica', resultado: 2 },
+        visitante: { nombre: 'Marruecos', resultado: 0 }
     },
     {
         id: 35,
         grupo: 'F',
         fecha: 3,
-        local: { nombre: 'Croacia', resultado: null },
-        visitante: { nombre: 'Bélgica', resultado: null }
+        local: { nombre: 'Croacia', resultado: 1 },
+        visitante: { nombre: 'Bélgica', resultado: 1 }
     },
     {
         id: 36,
         grupo: 'F',
         fecha: 3,
-        local: { nombre: 'Canadá', resultado: null },
-        visitante: { nombre: 'Marruecos', resultado: null }
+        local: { nombre: 'Canadá', resultado: 1 },
+        visitante: { nombre: 'Marruecos', resultado: 0 }
     },
     {
         id: 37,
         grupo: 'G',
         fecha: 1,
-        local: { nombre: 'Brasil', resultado: null },
-        visitante: { nombre: 'Serbia', resultado: null }
+        local: { nombre: 'Brasil', resultado: 3 },
+        visitante: { nombre: 'Serbia', resultado: 1 }
     },
     {
         id: 38,
         grupo: 'G',
         fecha: 1,
-        local: { nombre: 'Suiza', resultado: null },
-        visitante: { nombre: 'Camerún', resultado: null }
+        local: { nombre: 'Suiza', resultado: 1 },
+        visitante: { nombre: 'Camerún', resultado: 1 }
     },
     {
         id: 39,
         grupo: 'G',
         fecha: 2,
-        local: { nombre: 'Camerún', resultado: null },
-        visitante: { nombre: 'Serbia', resultado: null }
+        local: { nombre: 'Camerún', resultado: 2 },
+        visitante: { nombre: 'Serbia', resultado: 1 }
     },
     {
         id: 40,
         grupo: 'G',
         fecha: 2,
-        local: { nombre: 'Brasil', resultado: null },
-        visitante: { nombre: 'Suiza', resultado: null }
+        local: { nombre: 'Brasil', resultado: 1 },
+        visitante: { nombre: 'Suiza', resultado: 0 }
     },
     {
         id: 41,
         grupo: 'G',
         fecha: 3,
-        local: { nombre: 'Camerún', resultado: null },
-        visitante: { nombre: 'Brasil', resultado: null }
+        local: { nombre: 'Camerún', resultado: 0 },
+        visitante: { nombre: 'Brasil', resultado: 2 }
     },
     {
         id: 42,
         grupo: 'G',
         fecha: 3,
-        local: { nombre: 'Serbia', resultado: null },
-        visitante: { nombre: 'Suiza', resultado: null }
+        local: { nombre: 'Serbia', resultado: 1 },
+        visitante: { nombre: 'Suiza', resultado: 1 }
     },
     {
         id: 43,
         grupo: 'H',
         fecha: 1,
-        local: { nombre: 'Portugal', resultado: null },
-        visitante: { nombre: 'Ghana', resultado: null }
+        local: { nombre: 'Portugal', resultado: 2 },
+        visitante: { nombre: 'Ghana', resultado: 2 }
     },
     {
         id: 44,
         grupo: 'H',
         fecha: 1,
-        local: { nombre: 'Uruguay', resultado: null },
-        visitante: { nombre: 'Corea del Sur', resultado: null }
+        local: { nombre: 'Uruguay', resultado: 2 },
+        visitante: { nombre: 'Corea del Sur', resultado: 1 }
     },
     {
         id: 45,
         grupo: 'H',
         fecha: 2,
-        local: { nombre: 'Corea del Sur', resultado: null },
-        visitante: { nombre: 'Ghana', resultado: null }
+        local: { nombre: 'Corea del Sur', resultado: 1 },
+        visitante: { nombre: 'Ghana', resultado: 1 }
     },
     {
         id: 46,
         grupo: 'H',
         fecha: 2,
-        local: { nombre: 'Portugal', resultado: null },
-        visitante: { nombre: 'Uruguay', resultado: null }
+        local: { nombre: 'Portugal', resultado: 0 },
+        visitante: { nombre: 'Uruguay', resultado: 1 }
     },
     {
         id: 47,
         grupo: 'H',
         fecha: 3,
-        local: { nombre: 'Corea del Sur', resultado: null },
-        visitante: { nombre: 'Portugal', resultado: null }
+        local: { nombre: 'Corea del Sur', resultado: 0 },
+        visitante: { nombre: 'Portugal', resultado: 1 }
     },
     {
         id: 48,
         grupo: 'H',
         fecha: 3,
-        local: { nombre: 'Ghana', resultado: null },
-        visitante: { nombre: 'Uruguay', resultado: null }
-    }
+        local: { nombre: 'Ghana', resultado: 1 },
+        visitante: { nombre: 'Uruguay', resultado: 2 }
+    },
+    {
+        id: 49,
+        grupo: 'octavosFinal',
+        fecha: 4,
+        local: { id: '1A', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: '2B', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 50,
+        grupo: 'octavosFinal',
+        fecha: 4,
+        local: { id: '1C', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: '2D', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 51,
+        grupo: 'octavosFinal',
+        fecha: 4,
+        local: { id: '1E', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: '2F', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 52,
+        grupo: 'octavosFinal',
+        fecha: 4,
+        local: { id: '1G', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: '2H', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 53,
+        grupo: 'octavosFinal',
+        fecha: 4,
+        local: { id: '1B', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: '2A', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 54,
+        grupo: 'octavosFinal',
+        fecha: 4,
+        local: { id: '1D', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: '2C', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 55,
+        grupo: 'octavosFinal',
+        fecha: 4,
+        local: { id: '1F', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: '2E', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 56,
+        grupo: 'octavosFinal',
+        fecha: 4,
+        local: { id: '1H', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: '2G', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 57,
+        grupo: 'cuartosFinal',
+        fecha: 5,
+        local: { id: 'GP49', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: 'GP50', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 58,
+        grupo: 'cuartosFinal',
+        fecha: 5,
+        local: { id: 'GP51', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: 'GP52', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 59,
+        grupo: 'cuartosFinal',
+        fecha: 5,
+        local: { id: 'GP53', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: 'GP54', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 60,
+        grupo: 'cuartosFinal',
+        fecha: 5,
+        local: { id: 'GP55', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: 'GP56', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 61,
+        grupo: 'semifinal',
+        fecha: 6,
+        local: { id: 'GP57', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: 'GP58', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 62,
+        grupo: 'semifinal',
+        fecha: 6,
+        local: { id: 'GP59', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: 'GP60', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 63,
+        grupo: 'partidoTercerLugar',
+        fecha: 7,
+        local: { id: 'PP61', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: 'PP62', nombre: null, resultado: null, penales: null }
+    },
+    {
+        id: 64,
+        grupo: 'final',
+        fecha: 7,
+        local: { id: 'GP61', nombre: null, resultado: null, penales: null },
+        ganador: null,
+        perdedor: null,
+        visitante: { id: 'GP62', nombre: null, resultado: null, penales: null }
+    },
 ]

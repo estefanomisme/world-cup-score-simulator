@@ -7,30 +7,15 @@ import { Context } from './TabBox';
 
 
 function TabFinalStage (props) {
-	const [equipos, , ,] = useContext(Context);
-	const grupos = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+	/*const [equipos, , ,] = useContext(Context);
 	let clasificados = [];
 
-	for (let grupo of grupos) {
+	for (let grupo of ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']) {
 		let [primero, segundo] = equipos
 			.filter(equipo => equipo.grupo === grupo)
-      .sort((y, x) => {
-        if ( x.puntos === y.puntos ) {
-          if (( x.golesFavor - x.golesContra ) === ( y.golesFavor - y.golesContra)) {
-            return x.golesFavor - y.golesFavor;
-          }
-          else {
-            return (x.golesFavor - x.golesContra ) - ( y.golesFavor - y.golesContra)
-          }
-        }
-        else {
-          return x.puntos - y.puntos;
-        }
-      })
+			.sort((x, y) => x.puesto - y.puesto);
 		clasificados.push(primero, segundo);
-	}
-
-	console.log(clasificados);
+	}*/
 
 	return (
 		<Tabs>

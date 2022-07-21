@@ -1,0 +1,8 @@
+.partidos-fasefinal-inline {
+    display: flex;
+    flex-direction: column;
+}
+
+.golesPartido, .penalesPartido {
+    display: flex;
+}
