@@ -1,6 +1,6 @@
 .tabBox {
   width: 750px;
-	height: 500px;
+  min-height: 500px;
 }
 
 .tabMain {

@@ -6,9 +6,9 @@ import TableScore from './TableScore';
 import TableMatches from './TableMatches';
 import { Context } from './TabBox';
 
-function TabGroupStage(props) {
+function TabGroupStage({activarTabla}) {
 
-	const [equipos, , partidos, ] = useContext(Context);
+	const [equipos, , partidos, , , ] = useContext(Context);
 	const grupos = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
 	return (

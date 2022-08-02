@@ -5,7 +5,7 @@ import { Context } from './TabBox';
 
 function TableMatches({equiposGrupo, partidosGrupo}) {
 
-	const [equipos, setEquipos, partidos, setPartidos] = useContext(Context);
+	const [equipos, setEquipos, partidos, setPartidos, , ] = useContext(Context);
 
 	const equipo1 = equiposGrupo.filter(equipo => equipo.bombo === 1)[0].nombre;
 	const equipo2 = equiposGrupo.filter(equipo => equipo.bombo === 2)[0].nombre;
@@ -120,7 +120,7 @@ function TableMatches({equiposGrupo, partidosGrupo}) {
       golesFavor: golesFavorLocal[indice] + golesFavorVisitante[indice],
       golesContra: golesContraLocal[indice] + golesContraVisitante[indice],
       puntos: victorias[indice] * 3 + empates[indice],
-    }))
+    }));
 
 		objEquiposActualizados = objEquiposActualizados.sort((y, x) => {
 			if ( x.puntos === y.puntos ) {
@@ -189,9 +189,10 @@ function TableMatches({equiposGrupo, partidosGrupo}) {
     const restodePartidos = partidos
       .filter( partido => !partidosActualizados.includes(partido));
 
-		setEquipos([...restodeEquipos, ...objEquiposActualizados]);
-    setPartidos([...restodePartidos, ...partidosActualizados].sort((x, y) => x.id - y.id));
+    const nuevosEquipos = [...restodeEquipos, ...objEquiposActualizados];
 
+		setEquipos(nuevosEquipos);
+    setPartidos([...restodePartidos, ...partidosActualizados].sort((x, y) => x.id - y.id));
 	}
 
 	return (

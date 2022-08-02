@@ -53,7 +53,7 @@ function TableScore({equipos}) {
               <td>{equipo.golesFavor}</td>
               <td>{equipo.golesContra}</td>
               <td>{equipo.golesFavor - equipo.golesContra}</td>
-          </tr>
+            </tr>
           ))}
         </tbody>
       </table>

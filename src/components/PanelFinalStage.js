@@ -1,10 +1,12 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { Context } from './TabBox';
 import './styles/PanelFinalStage.css'
 
-function PlantillaFase ({fase, partidosFase}) {
+function PlantillaFase ({fase, partidosFase, activarTabla, definirCampeon}) {
 
-  const [equipos, setEquipos, partidos, setPartidos] = useContext(Context);
+  const [equipos, setEquipos,
+    partidos, setPartidos,
+    , setEquiposTablaFinal] = useContext(Context);
 
   function setResultado(fase, equipoNombre, puntaje, tipoAnotacion, esLocal) {
     if (equipoNombre !== null) {
@@ -31,19 +33,25 @@ function PlantillaFase ({fase, partidosFase}) {
         }
       }
 
+      if (partidoActualizado.local.resultado !== partidoActualizado.visitante.resultado
+        && partidoActualizado.local.penales === partidoActualizado.visitante.penales) {
+        partidoActualizado.local.penales = null;
+        partidoActualizado.visitante.penales = null;
+      }
+
       setPartidos([...restodePartidos, partidoActualizado].sort((x, y) => x.id - y.id));
     };
   }
 
   function clasificarEquipos (e) {
     e.preventDefault();
+
     const nombreFase = partidosFase[0].grupo;
     let partidosActualizados = partidos.filter(partido => partido.id > 48);
-    const partidosGrupo = partidosActualizados.filter(partido => partido.grupo === nombreFase);
+    const restodePartidos = partidos.filter(partido => partido.id <= 48);
+    let partidosReiniciados = partidosActualizados.filter(partido => partido.grupo !== nombreFase);
 
-    let nombreEquiposClasificados = [];
-
-    partidosGrupo.forEach(partido => {
+    partidosFase.forEach(partido => {
       if (partido.local.penales !== null
         && partido.visitante.penales !== null
         && partido.local.penales === partido.visitante.penales) {
@@ -51,76 +59,253 @@ function PlantillaFase ({fase, partidosFase}) {
         return;
       }
       else {
-        const equipoGanador = partido.local.goles === partido.visante.goles ? (
-          partido.local.penales > partido.visante.penales ? partido.local.nombre: partido.visante.nombre
-        ): (
-          partido.local.goles > partido.visante.goles ? partido.local.nombre: partido.visante.nombre
-          );
-        nombreEquiposClasificados.push(equipoGanador);
+        let equipoGanador;
+        let equipoPerdedor;
+
+        if ((partido.local.resultado === partido.visitante.resultado
+          && partido.local.penales > partido.visitante.penales)
+        || (partido.local.resultado > partido.visitante.resultado)) {
+            equipoGanador = partido.local.nombre;
+            equipoPerdedor = partido.visitante.nombre;
+        } else if ((partido.local.resultado === partido.visitante.resultado
+          && partido.local.penales < partido.visitante.penales)
+        || (partido.local.resultado < partido.visitante.resultado)) {
+          equipoGanador = partido.visitante.nombre;
+          equipoPerdedor = partido.local.nombre;
+        }
+
+        partido.ganador = equipoGanador;
+        partido.perdedor = equipoPerdedor;
       }
     });
 
-    let equiposClasificados = equipos.filter((equipo, indice) => (
-      equipo.nombre === nombreEquiposClasificados[indice])
-    );
-
-    /* 1. seleccionar a los equipos clasificados a la siguiente fase
-       2. borrar todos los partidos de la siguiente fase */
-
     if (nombreFase === 'octavosFinal') {
-      equiposClasificados.forEach(equipo => {
-        equipo.clasificado = 'cuartosFinal';
-      });
-      partidosActualizados.forEach(partido => {
-        if (partido.grupo === 'octavosFinal') {
-          partidoSiguienteFase = partidosActualizados
-            .filter(partidoSF => partidoSF.local.id === 'GP' + partido.id
-              || partidoSF.local.id === 'GP' + partido.id);
-          if (partidoSiguienteFase.local.id === 'GP' + partido.id) {
-            partidoSiguienteFase.local.nombre = ;
-          }
-          // equipoSiguienteFase.id = 'GP' + partido.id;
-          // equipoClasificado = equiposClasificados
-          //   .filter(equipo => [partido.local.nombre, partido.visitante.nombre].includes(equipo.nombre));
-          // equipoSiguienteFase.nombre = partido.local.nombre === equipoClasificado.nombre?
-          //   equipoClasificado.nombre: null;
-        }
-        
-        else if (['semifinal', 'partidoTercerLugar', 'final'].includes(partido.grupo)) {
-          let localId = partido.local.id;
-          let visitanteId = partido.visitante.id;
-          partido = {...partido,
-            local: {id: localId, nombre: null, resultado: null, penales: null},
-            visitante: {id: visitanteId, nombre: null, resultado: null, penales: null}}
-        }
-      })
-    } else if (nombreFase === 'cuartosFinal') {
-      equiposClasificados.forEach(equipo => {
-        equipo.clasificado = 'semifinal';
-      });
-      partidosActualizados.forEach(partido => {
-        if (['semifinal', 'partidoTercerLugar', 'final'].includes(partido.grupo)) {
-          let localId = partido.local.id;
-          let visitanteId = partido.visitante.id;
-          partido = {...partido,
-            local: {id: localId, nombre: null, resultado: null, penales: null},
-            visitante: {id: visitanteId, nombre: null, resultado: null, penales: null}}
-        }
-      })
-    } else if (nombreFase === 'semifinal') {
-      let [equipoGanador] = equiposClasificados;
-      let equipoPerdedor = equipos
-        .filter(equipo => equipo.clasificado === 'semifinal')
-        .filter(equipo => equipo !== equipoGanador);
-      equipoGanador.clasificado = 'final';
-      equipoPerdedor.clasificado = 'partidoTercerLugar';
+      activarTabla();
     }
-  }
+  
+    partidosReiniciados.forEach(partido => {
+      const idLocal = partido.local.id;
+      const idVisitante = partido.visitante.id;
+      let nombreLocal;
+      let nombreVisitante;
+      if ((nombreFase === 'octavosFinal' && partido.grupo === 'cuartosFinal')
+      || (nombreFase === 'cuartosFinal' && partido.grupo === 'semifinal')
+      || (nombreFase === 'semifinal' && (partido.grupo === 'partidoTercerLugar' || partido.grupo === 'final'))) {
+        if (partido.grupo !== 'partidoTercerLugar') {
+          nombreLocal = partidosFase
+            .filter(partido => partido.id === parseInt(idLocal.replace('GP', '')))[0].ganador;
+          nombreVisitante = partidosFase
+            .filter(partido => partido.id === parseInt(idVisitante.replace('GP', '')))[0].ganador;
+        } else {
+          nombreLocal = partidosFase
+            .filter(partido => partido.id === parseInt(idLocal.replace('PP', '')))[0].perdedor;
+          nombreVisitante = partidosFase
+            .filter(partido => partido.id === parseInt(idVisitante.replace('PP', '')))[0].perdedor;
+        };
+        partido.local = { id: idLocal, nombre: nombreLocal? nombreLocal: null, resultado: null, penales: null };
+        partido.visitante = { id: idVisitante, nombre: nombreVisitante? nombreVisitante: null, resultado: null, penales: null };
+        partido.ganador = null;
+        partido.perdedor = null;
+      } else if ((nombreFase === 'octavosFinal' && ['semifinal', 'partidoTercerLugar', 'final'].includes(partido.grupo))
+      || (nombreFase === 'cuartosFinal' && ['partidoTercerLugar', 'final'].includes(partido.grupo))) {
+        partido.local = { id: idLocal, nombre:  null, resultado: null, penales: null };
+        partido.visitante = { id: idVisitante, nombre: null, resultado: null, penales: null };
+        partido.ganador = null;
+        partido.perdedor = null;
+      };
+    });
+
+    partidosActualizados = [...partidosFase, ...partidosReiniciados].sort((x, y) => x.id - y.id);
+    setPartidos([...restodePartidos, ...partidosActualizados]);
+
+    equipos.forEach(equipo => {
+      if (nombreFase === 'semifinal') {
+        if (partidosFase.some(partido => partido.ganador === equipo.nombre)) {
+          equipo.clasificado = 'final';
+        }
+        else if (partidosFase.some(partido => partido.perdedor === equipo.nombre)) {
+          equipo.clasificado = 'partidoTercerLugar';
+        }
+      }
+      else if (partidosFase.some(partido => partido.ganador === equipo.nombre)) {
+        if (nombreFase === 'octavosFinal') {
+          equipo.clasificado = 'cuartosFinal';
+        }
+        else if (nombreFase === 'cuartosFinal') {
+          equipo.clasificado = 'semifinal';
+        }
+      }
+    });
+
+    if (nombreFase === 'final') {
+      let equipoCampeon = null;
+
+      for (const equipo of equipos) {
+        if (partidosFase[0].ganador === equipo.nombre) {
+          equipoCampeon = equipo.nombre;
+          definirCampeon(equipoCampeon);
+          break;
+        };
+      }
+    };
+    setEquipos([...equipos]);
+  
+
+    /* actualizar los resultados en tabla final de equipos */
+    // coger los resultados de la fase final
+    // agarrar los goles hechos por cada equipo y los suma en la tabla de equipos
+    // a partir de semifinal, ponerles el puesto de primero, segundo, tercero, cuarto
+
+    const nombreEquiposFaseFinalLocal = partidos
+      .filter(partido => partido.id > 48 && partido.id <= 56)
+      .map(partido => partido.local.nombre);
+    const nombreEquiposFaseFinalVisitante = partidos
+      .filter(partido => partido.id > 48 && partido.id <= 56)
+      .map(partido => partido.visitante.nombre);
+    const nombreEquiposFaseFinal = [...nombreEquiposFaseFinalLocal, ...nombreEquiposFaseFinalVisitante];
+
+    const partidosJugados = nombreEquiposFaseFinal.map((equipo) => (
+      partidosActualizados
+      .reduce((total, partido) => (
+        [partido.local.nombre, partido.visitante.nombre].includes(equipo)?
+        total + 1 : total), 0)
+    ));
+
+    const victorias = nombreEquiposFaseFinal.map((equipo) => (
+      partidosActualizados
+      .reduce((total, partido) => (
+        (partido.local.nombre === equipo
+          && partido.local.resultado != null
+          && partido.visitante.resultado != null
+          && partido.local.resultado > partido.visitante.resultado) ||
+        (partido.visitante.nombre === equipo
+          && partido.local.resultado != null
+          && partido.visitante.resultado != null
+          && partido.visitante.resultado > partido.local.resultado) ?
+        total + 1 : total), 0)
+    ));
+
+    const empates = nombreEquiposFaseFinal.map((equipo) => (
+      partidosActualizados
+      .reduce((total, partido) => (
+        (partido.local.nombre === equipo || partido.visitante.nombre === equipo)
+        && (partido.local.resultado != null && partido.visitante.resultado != null)
+				&& (partido.local.resultado === partido.visitante.resultado)  ?
+        total + 1 : total), 0)
+    ));
+
+    const derrotas = nombreEquiposFaseFinal.map((equipo) => (
+      partidosActualizados
+      .reduce((total, partido) => (
+        (partido.local.nombre === equipo
+          && partido.local.resultado != null
+          && partido.visitante.resultado != null
+          && partido.local.resultado < partido.visitante.resultado) ||
+        (partido.visitante.nombre === equipo
+          && partido.local.resultado != null
+          && partido.visitante.resultado != null
+          && partido.visitante.resultado < partido.local.resultado) ?
+        total + 1 : total), 0)
+    ));
+
+    const golesFavorLocal = nombreEquiposFaseFinal.map((equipo) => (
+      partidosActualizados
+      .reduce((total, partido) => (
+        (partido.local.nombre === equipo
+          && partido.local.resultado != null) ?
+          total + partido.local.resultado : total), 0)
+    ));
+
+    const golesFavorVisitante = nombreEquiposFaseFinal.map((equipo) => (
+      partidosActualizados
+      .reduce((total, partido) => (
+        (partido.visitante.nombre === equipo
+          && partido.visitante.resultado != null) ?
+          total + partido.visitante.resultado : total), 0)
+    ));
+
+    const golesContraLocal = nombreEquiposFaseFinal.map((equipo) => (
+      partidosActualizados
+      .reduce((total, partido) => (
+        (partido.local.nombre === equipo
+          && partido.visitante.resultado != null) ?
+          total + partido.visitante.resultado : total), 0)
+    ));
+
+    const golesContraVisitante = nombreEquiposFaseFinal.map((equipo) => (
+      partidosActualizados
+      .reduce((total, partido) => (
+        (partido.visitante.nombre === equipo
+          && partido.local.resultado != null) ?
+          total + partido.local.resultado : total), 0)
+    ));
+
+    let objEquiposActualizados = [];
+
+    nombreEquiposFaseFinal.forEach((equipoNombre, indice) => {
+      let [equipoActualizado] = equipos.filter(equipo => equipo.nombre === equipoNombre);
+
+      equipoActualizado = {
+        ...equipoActualizado,
+        partidos: equipoActualizado.partidos + partidosJugados[indice],
+        victorias: equipoActualizado.victorias + victorias[indice],
+        empates: equipoActualizado.empates + empates[indice],
+        derrotas: equipoActualizado.derrotas + derrotas[indice],
+        golesFavor: equipoActualizado.golesFavor + golesFavorLocal[indice] + golesFavorVisitante[indice],
+        golesContra: equipoActualizado.golesContra + golesContraLocal[indice] + golesContraVisitante[indice],
+        puntos: equipoActualizado.puntos + victorias[indice] * 3 + empates[indice],
+        puesto: 0
+      }
+
+      objEquiposActualizados.push(equipoActualizado);
+    });
+
+    const restoDeEquipos = equipos
+      .filter(equipo => !(nombreEquiposFaseFinal.includes(equipo.nombre)));
+
+    const ordenClasificacion = {
+      faseDeGrupos: 0,
+      octavosFinal: 1,
+      cuartosFinal: 2,
+      semifinal: 3,
+      partidoTercerLugar: 4,
+      final: 5
+    };
+
+    const tablaFinalActualizada = [...restoDeEquipos, ...objEquiposActualizados].sort((x, y) => {
+      if (ordenClasificacion[y.clasificado] === ordenClasificacion[x.clasificado]) {
+        if ([4, 5].includes(ordenClasificacion[y.clasificado])) {
+          const [ganador] = partidos
+            .filter((partido) => partido.grupo === y.clasificado)
+            .map((partido) => partido.ganador );
+          return ganador === y.nombre? 1: -1;
+        }
+        else {
+          if ( y.puntos === x.puntos ) {
+            if (( y.golesFavor - y.golesContra ) === ( x.golesFavor - x.golesContra)) {
+              return y.golesFavor - x.golesFavor;
+            }
+            else {
+              return (y.golesFavor - y.golesContra ) - ( x.golesFavor - x.golesContra);
+            }
+          }
+          else {
+            return y.puntos - x.puntos;
+          }
+        }
+      }
+      else {
+        return ordenClasificacion[y.clasificado] - ordenClasificacion[x.clasificado];
+      }
+    });
+
+    setEquiposTablaFinal([...tablaFinalActualizada]);
+  };
 
 	return (
     <>
       <h2>{fase}</h2>
-      <form /*onSubmit={clasificarEquipos}*/>
+      <form onSubmit={clasificarEquipos}>
         {partidosFase.map((partido, index) => (
           <div key={index} className='partidos-fasefinal-inline'>
             <div className='golesPartido'>
@@ -159,7 +344,7 @@ function PlantillaFase ({fase, partidosFase}) {
                   type="tel"
                   maxLength="2"
                   disabled={partido.local.nombre? false: true}
-                  defaultValue={partido.local.penales !== null ? partido.local.penales: ''}
+                  defaultValue={partido.local.goles !== null ? partido.local.penales: ''}
                   onChange={(e) => setResultado(partido.grupo, partido.local.nombre, e.target.value, 'penal', true)} />
                 <p>-</p>
                 <input
@@ -172,15 +357,24 @@ function PlantillaFase ({fase, partidosFase}) {
             </div>
           </div>
 			  ))}
-        <button type="submit">Calcular</button>
+        <button
+          type="submit"
+          disabled={partidosFase.every(partido => (partido.local.nombre !== null
+            && partido.visitante.nombre !== null &&
+            ((partido.local.resultado !== null && partido.visitante.resultado != null
+              && partido.local.resultado !== partido.visitante.resultado)
+            ||(partido.local.resultado === partido.visitante.resultado
+              && partido.local.penales != null && partido.visitante.penales != null))))?
+            false: true}
+          >Calcular</button>
       </form>
     </>
 	);
 }
 
-export function PanelOctavosFinal () {
+export function PanelOctavosFinal ({activarTabla}) {
 
-	const [, , partidos, setPartidos] = useContext(Context);
+	const [, , partidos, ] = useContext(Context);
 
 	const fase = 'Octavos de Final';
 
@@ -189,12 +383,12 @@ export function PanelOctavosFinal () {
     .sort((x, y) => x.id - y.id);
 
 	return (
-		<PlantillaFase className='OFPlantilla' fase={fase} partidosFase={partidosFase} />
+		<PlantillaFase className='OFPlantilla' fase={fase} partidosFase={partidosFase} activarTabla={activarTabla} />
 	)
 }
 
 export function PanelCuartosFinal () {
-  const [, , partidos, setPartidos] = useContext(Context);
+  const [, , partidos, ] = useContext(Context);
 	const fase = 'Cuartos de Final';
 	const partidosFase = partidos
     .filter( partido => partido.grupo === 'cuartosFinal')
@@ -206,7 +400,7 @@ export function PanelCuartosFinal () {
 }
 
 export function PanelSemifinal () {
-  const [, , partidos, setPartidos] = useContext(Context);
+  const [, , partidos, ] = useContext(Context);
 	const fase = 'Semifinal';
 	const partidosFase = partidos
     .filter( partido => partido.grupo === 'semifinal')
@@ -217,14 +411,27 @@ export function PanelSemifinal () {
 	);
 }
 
-export function PanelFinal () {
-  const [, , partidos, setPartidos] = useContext(Context);
-	const fase = 'Final';
-  const partidosFase = partidos
+export function PanelFinal ({definirCampeon, campeon}) {
+  const [equipos, , partidos, ] = useContext(Context);
+  const partidosTercerLugar = partidos
+  .filter( partido => partido.grupo === 'partidoTercerLugar')
+  .sort((x, y) => x.id - y.id);
+  const partidosFinal = partidos
     .filter( partido => partido.grupo === 'final')
     .sort((x, y) => x.id - y.id);
+  const strImgCampeon = campeon? equipos.filter(equipo => equipo.nombre === campeon)[0].imgcampeon: '';
 
 	return (
-		<PlantillaFase className='FinalPlantilla' fase={fase} partidosFase={partidosFase} />
+    <>
+      <PlantillaFase className='PTLPlantilla' fase={'Partido por el Tercer lugar'} partidosFase={partidosTercerLugar} />
+      <PlantillaFase className='FinalPlantilla' fase={'Final'} partidosFase={partidosFinal} definirCampeon={definirCampeon}/>
+      <div style={{display: campeon? 'initial': 'none'}}>
+        {campeon? <img
+          src={require(`./images/${strImgCampeon}`)}
+          alt={campeon}
+          className="champion" />: <></>}
+        <p>Felicidades, {campeon}, eres el campeón del FIFA World Cup Qatar 2022</p>
+      </div>
+    </>
 	);
 }
