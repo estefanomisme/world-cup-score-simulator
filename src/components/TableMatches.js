@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import './styles/react-tabs.css';
 import './styles/TableMatches.css';
 import { Context } from './TabBox';
+import nuevosDatosEquipos from './functions/nuevosDatosEquipos';
 
 function TableMatches({equiposGrupo, partidosGrupo}) {
 
@@ -52,65 +53,9 @@ function TableMatches({equiposGrupo, partidosGrupo}) {
 				&& equipo.nombre !== equipo3
 				&& equipo.nombre !== equipo4);
 
-    const partidosJugados = listaNombreEquiposActualizados.map((equipo) => (
-      partidosLlenados
-      .reduce((total, partido) => (
-        partido.local.nombre === equipo ||
-        partido.visitante.nombre === equipo ?
-        total + 1 : total), 0)
-    ));
-
-    const victorias = listaNombreEquiposActualizados.map((equipo) => (
-      partidosLlenados
-      .reduce((total, partido) => (
-        (partido.local.nombre === equipo && partido.local.resultado > partido.visitante.resultado) ||
-        (partido.visitante.nombre === equipo && partido.visitante.resultado > partido.local.resultado) ?
-        total + 1 : total), 0)
-    ));
-
-    const empates = listaNombreEquiposActualizados.map((equipo) => (
-      partidosLlenados
-      .reduce((total, partido) => (
-        (partido.local.nombre === equipo || partido.visitante.nombre === equipo)
-				&& (partido.local.resultado === partido.visitante.resultado)  ?
-        total + 1 : total), 0)
-    ));
-
-    const derrotas = listaNombreEquiposActualizados.map((equipo) => (
-      partidosLlenados
-      .reduce((total, partido) => (
-        (partido.local.nombre === equipo && partido.local.resultado < partido.visitante.resultado) ||
-        (partido.visitante.nombre === equipo && partido.visitante.resultado < partido.local.resultado) ?
-        total + 1 : total), 0)
-    ));
-
-    const golesFavorLocal = listaNombreEquiposActualizados.map((equipo) => (
-      partidosLlenados
-      .reduce((total, partido) => (
-        (partido.local.nombre === equipo) ? total + partido.local.resultado : total
-      ), 0)
-    ));
-
-    const golesFavorVisitante = listaNombreEquiposActualizados.map((equipo) => (
-      partidosLlenados
-      .reduce((total, partido) => (
-        (partido.visitante.nombre === equipo) ? total + partido.visitante.resultado : total
-      ), 0)
-    ));
-
-    const golesContraLocal = listaNombreEquiposActualizados.map((equipo) => (
-      partidosLlenados
-      .reduce((total, partido) => (
-        (partido.local.nombre === equipo) ? total + partido.visitante.resultado : total
-      ), 0)
-    ));
-
-    const golesContraVisitante = listaNombreEquiposActualizados.map((equipo) => (
-      partidosLlenados
-      .reduce((total, partido) => (
-        (partido.visitante.nombre === equipo) ? total + partido.local.resultado : total
-      ), 0)
-    ));
+    const [partidosJugados, victorias, empates, derrotas,
+      golesFavorLocal, golesFavorVisitante, golesContraLocal,
+      golesContraVisitante] = nuevosDatosEquipos(listaNombreEquiposActualizados, partidosLlenados);
 
     let objEquiposActualizados = listaEquiposActualizados.map((equipo, indice) => ({...equipo,
       partidos: partidosJugados[indice],
